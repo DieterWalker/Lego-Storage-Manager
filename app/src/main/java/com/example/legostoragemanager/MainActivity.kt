@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             LegoStorageManagerTheme {
-
+                LegoStorageManagerApp()
             }
         }
     }
@@ -27,6 +27,8 @@ class MainActivity : ComponentActivity() {
 
 @Preview
 @Composable
-fun LegoStorageManagerAppPreview(){
-
+fun MainActivityPreview(){
+    LegoStorageManagerTheme{
+        LegoStorageManagerApp()
+    }
 }

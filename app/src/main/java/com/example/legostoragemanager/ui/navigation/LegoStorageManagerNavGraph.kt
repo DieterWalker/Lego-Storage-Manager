@@ -1,9 +1,11 @@
 package com.example.legostoragemanager.ui.navigation
 
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import com.example.legostoragemanager.ui.home.HomeDestination
 import com.example.legostoragemanager.ui.home.HomeScreen
 
@@ -21,9 +23,11 @@ fun InventoryNavHost(
         startDestination = HomeDestination.route,
         modifier = modifier
     ) {
-        compossable(route = HomeDestination.route){
+        composable(route = HomeDestination.route){
             HomeScreen(
-
+                navigateToPiecesScreen = {},
+                navigateToMinifigureScreen = {},
+                modifier = modifier.fillMaxSize(),
             )
         }
     }
