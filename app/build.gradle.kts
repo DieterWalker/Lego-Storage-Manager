@@ -38,19 +38,40 @@ android {
 }
 
 dependencies {
+    /** Thư viện nền tảng của Android / Kotlin */
     implementation(libs.androidx.core.ktx)
+    /** Thư viện quản lý vòng đời của Activity */
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    /** Thư viện Jetpack Composer */
     implementation(libs.androidx.activity.compose)
+    /** Compose BOM (Bill of Materials) */
     implementation(platform(libs.androidx.compose.bom))
+    /** Thư viện xây giao diện (Composer UI) và đồ họa (Composer Graphics) */
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.graphics)
+    /** Thư viện cho phép tạo các bản xem trước @Preview */
     implementation(libs.androidx.compose.ui.tooling.preview)
+    /** Thư viện Material 3 cung cấp Button, TextField, Theme... */
     implementation(libs.androidx.compose.material3)
+    /** Thư viện cung cấp Navigation cho chương trình*/
+    implementation(libs.androidx.navigation.compose)
+    /** Thư viện Junit hỗ trợ kiểm thử */
     testImplementation(libs.junit)
+    /** Thư viện hỗ trợ chạy test trên thiết bị / máy ảo */
     androidTestImplementation(libs.androidx.junit)
+    /** Thư viện Test UI (View-based) */
     androidTestImplementation(libs.androidx.espresso.core)
+    /** Đồng bộ BOM với Compose UI Test  */
     androidTestImplementation(platform(libs.androidx.compose.bom))
+    /** Thư viện Compose UI Testing */
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+    /** Thư viện hỗ trợ Layout Inspector và Debug recomposition */
     debugImplementation(libs.androidx.compose.ui.tooling)
+    /** Thư viện Manifest riêng cho Compose UI Test */
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+    /** Thư viện cho Room:
+     * + Core của Room
+     * + Đọc @Entity, @Dao, tự động sin code SQL + implementation
+     * + Kotlin Extensions
+     * */
 }
