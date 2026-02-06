@@ -1,13 +1,19 @@
 package com.example.legostoragemanager.ui.home
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -17,11 +23,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.legostoragemanager.R
 import com.example.legostoragemanager.ui.navigation.NavigationDestination
+import com.example.legostoragemanager.ui.theme.Shapes
 
 object HomeDestination : NavigationDestination{
     override val route = "home"
@@ -31,8 +40,7 @@ object HomeDestination : NavigationDestination{
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    navigateToPiecesScreen: () -> Unit,
-    navigateToMinifigureScreen: () -> Unit,
+    onNavigateToPiecesScreen: () -> Unit,
     modifier: Modifier = Modifier
 ){
     Scaffold(
@@ -43,8 +51,7 @@ fun HomeScreen(
         }
     ) { innerPadding ->
         HomeBody(
-            navigateToPiecesScreen = navigateToPiecesScreen,
-            navigateToMinifigureScreen = navigateToMinifigureScreen,
+            onNavigateToPiecesScreen = onNavigateToPiecesScreen,
             modifier = modifier,
             contentPadding = innerPadding,
         )
@@ -59,7 +66,6 @@ fun HomeTopBar(
     TopAppBar(
         title = {
             Row(
-                verticalAlignment = Alignment.CenterVertically,
                 modifier = modifier.fillMaxWidth()
             ){
                 Text(
@@ -75,40 +81,56 @@ fun HomeTopBar(
 
 @Composable
 fun HomeBody(
-    navigateToPiecesScreen: () -> Unit,
-    navigateToMinifigureScreen: () -> Unit,
+    onNavigateToPiecesScreen: () -> Unit,
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues(all = 0.dp),
 ){
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize().padding(contentPadding)
     ) {
         Text(
-            text = "Welcome Back!"
+            text = "Welcome Back!",
+            style = MaterialTheme.typography.displayMedium
         )
         Button(
-            onClick = navigateToPiecesScreen,
+            onClick = onNavigateToPiecesScreen,
+            modifier = Modifier
+                .fillMaxWidth()
+                .aspectRatio(1.5f)
+                .padding(10.dp),
+            shape = Shapes.medium,
+            contentPadding = PaddingValues(0.dp)
         ) {
-            Text("Brick")
-        }
-
-        Button(
-            onClick = navigateToMinifigureScreen
-        ) {
-            Text("Minifigure")
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(10.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                Image(
+                    painter = painterResource(R.drawable.ic_broken_image),
+                    contentDescription = "loading",
+                    modifier = Modifier
+                        .weight(1f)
+                        .aspectRatio(1f),
+                )
+                Text(
+                    text = stringResource(R.string.home_pieces_button),
+                    style = MaterialTheme.typography.titleLarge,
+                )
+            }
         }
     }
-
 }
+
 
 @Preview
 @Composable
 fun HomeScreenPreview(){
     HomeScreen(
-        navigateToPiecesScreen = {} ,
-        navigateToMinifigureScreen = {},
+        onNavigateToPiecesScreen = {} ,
         modifier = Modifier.fillMaxSize(),
     )
 }
