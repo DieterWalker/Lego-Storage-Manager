@@ -5,6 +5,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import com.example.legostoragemanager.R
 
@@ -18,17 +19,28 @@ val GoogleSans = FontFamily (
 val Typography = Typography(
     /** Các văn bản cần được nổi bật */
     displayLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 16.sp,
+        fontFamily = GoogleSans,
+        fontWeight = FontWeight.Bold,
+        fontSize = 48.sp,
         lineHeight = 24.sp,
-        letterSpacing = 0.5.sp
+        letterSpacing = 0.5.sp,
+        textAlign = TextAlign.Center,
     ),
     displayMedium = TextStyle(
-
+        fontFamily = GoogleSans,
+        fontWeight = FontWeight.Bold,
+        fontSize = 32.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.5.sp,
+        textAlign = TextAlign.Center,
     ),
     displaySmall = TextStyle(
-
+        fontFamily = GoogleSans,
+        fontWeight = FontWeight.Bold,
+        fontSize = 24.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.5.sp,
+        textAlign = TextAlign.Center,
     ),
     /** Tiêu đề chính của màn hình */
     headlineLarge = TextStyle(
@@ -48,19 +60,34 @@ val Typography = Typography(
     headlineSmall = TextStyle(
         fontFamily = GoogleSans,
         fontWeight = FontWeight.Bold,
-        fontSize = 32.sp,
+        fontSize = 16.sp,
         lineHeight = 16.sp,
         letterSpacing = 0.5.sp
     ),
     /** Tiêu đề khối - card */
     titleLarge = TextStyle(
-
+        fontFamily = GoogleSans,
+        fontWeight = FontWeight.Bold,
+        fontSize = 24.sp,
+        lineHeight = 16.sp,
+        letterSpacing = 0.5.sp,
+        textAlign = TextAlign.Center,
     ),
     titleMedium = TextStyle(
-
+        fontFamily = GoogleSans,
+        fontWeight = FontWeight.Bold,
+        fontSize = 16.sp,
+        lineHeight = 16.sp,
+        letterSpacing = 0.5.sp,
+        textAlign = TextAlign.Center,
     ),
     titleSmall = TextStyle(
-
+        fontFamily = GoogleSans,
+        fontWeight = FontWeight.Bold,
+        fontSize = 14.sp,
+        lineHeight = 16.sp,
+        letterSpacing = 0.5.sp,
+        textAlign = TextAlign.Center,
     ),
     /** Nội dung chính */
     bodyLarge = TextStyle(

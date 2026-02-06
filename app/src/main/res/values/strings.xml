@@ -1,6 +1,13 @@
 <resources>
-    <string name="app_name">LEGO STORAGE MANAGER Beta</string>
+    <string name="app_name">LEGO STORAGE MANAGER</string>
 
     <!-- HomeScreen String-->
     <string name="home_greeting">Welcome back!</string>
+
+    <string name="home_pieces_button">PIECES</string>
+    <string name="home_minifigures_button">MINIFIGURES</string>
+
+    <!-- Piece Manager Screen -->
+    <string name="piece_manager_screen">PIECES</string>>
+
 </resources>
