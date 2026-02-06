@@ -2,13 +2,21 @@ package com.example.legostoragemanager.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.example.legostoragemanager.R
 
-// Set of Material typography styles to start with
+/** Khai báo phông chữ */
+val GoogleSans = FontFamily (
+    Font(R.font.googlesans_regular),
+    Font(R.font.googlesans_bold),
+    Font(R.font.googlesans_italic),
+)
+
 val Typography = Typography(
-    /* Các văn bản cần được nổi bật */
+    /** Các văn bản cần được nổi bật */
     displayLarge = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Normal,
@@ -22,17 +30,29 @@ val Typography = Typography(
     displaySmall = TextStyle(
 
     ),
-    /* Tiêu đề chính của màn hình */
+    /** Tiêu đề chính của màn hình */
     headlineLarge = TextStyle(
-
+        fontFamily = GoogleSans,
+        fontWeight = FontWeight.Bold,
+        fontSize = 32.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.5.sp
     ),
     headlineMedium = TextStyle(
-
+        fontFamily = GoogleSans,
+        fontWeight = FontWeight.Bold,
+        fontSize = 24.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.5.sp
     ),
     headlineSmall = TextStyle(
-
+        fontFamily = GoogleSans,
+        fontWeight = FontWeight.Bold,
+        fontSize = 32.sp,
+        lineHeight = 16.sp,
+        letterSpacing = 0.5.sp
     ),
-    /* Tiêu đề khối - card */
+    /** Tiêu đề khối - card */
     titleLarge = TextStyle(
 
     ),
@@ -42,7 +62,7 @@ val Typography = Typography(
     titleSmall = TextStyle(
 
     ),
-    /* Nội dung chính */
+    /** Nội dung chính */
     bodyLarge = TextStyle(
 
     ),
@@ -52,7 +72,7 @@ val Typography = Typography(
     bodySmall = TextStyle(
 
     ),
-    /* Các nội dung phụ */
+    /** Các nội dung phụ */
     labelLarge = TextStyle(
 
     ),
