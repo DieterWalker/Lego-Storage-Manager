@@ -40,7 +40,8 @@ object HomeDestination : NavigationDestination{
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    onNavigateToPiecesScreen: () -> Unit,
+    onNavigateToManagerScreen: () -> Unit,
+    onNavigateToSellerScreen: () -> Unit,
     modifier: Modifier = Modifier
 ){
     Scaffold(
@@ -51,7 +52,8 @@ fun HomeScreen(
         }
     ) { innerPadding ->
         HomeBody(
-            onNavigateToPiecesScreen = onNavigateToPiecesScreen,
+            onNavigateToManagerScreen = onNavigateToManagerScreen,
+            onNavigateToSellerScreen = onNavigateToSellerScreen,
             modifier = modifier,
             contentPadding = innerPadding,
         )
@@ -60,7 +62,7 @@ fun HomeScreen(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeTopBar(
+private fun HomeTopBar(
     modifier: Modifier = Modifier
 ){
     TopAppBar(
@@ -80,8 +82,9 @@ fun HomeTopBar(
 }
 
 @Composable
-fun HomeBody(
-    onNavigateToPiecesScreen: () -> Unit,
+private fun HomeBody(
+    onNavigateToManagerScreen: () -> Unit,
+    onNavigateToSellerScreen: () -> Unit,
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues(all = 0.dp),
 ){
@@ -95,7 +98,7 @@ fun HomeBody(
             style = MaterialTheme.typography.displayMedium
         )
         Button(
-            onClick = onNavigateToPiecesScreen,
+            onClick = onNavigateToManagerScreen,
             modifier = Modifier
                 .fillMaxWidth()
                 .aspectRatio(1.5f)
@@ -117,7 +120,36 @@ fun HomeBody(
                         .aspectRatio(1f),
                 )
                 Text(
-                    text = stringResource(R.string.home_pieces_button),
+                    text = stringResource(R.string.home_manager_button),
+                    style = MaterialTheme.typography.titleLarge,
+                )
+            }
+        }
+
+        Button(
+            onClick = onNavigateToSellerScreen,
+            modifier = Modifier
+                .fillMaxWidth()
+                .aspectRatio(1.5f)
+                .padding(10.dp),
+            shape = Shapes.medium,
+            contentPadding = PaddingValues(0.dp)
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(10.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                Image(
+                    painter = painterResource(R.drawable.ic_broken_image),
+                    contentDescription = "loading",
+                    modifier = Modifier
+                        .weight(1f)
+                        .aspectRatio(1f),
+                )
+                Text(
+                    text = stringResource(R.string.home_seller_button),
                     style = MaterialTheme.typography.titleLarge,
                 )
             }
@@ -128,9 +160,10 @@ fun HomeBody(
 
 @Preview
 @Composable
-fun HomeScreenPreview(){
+private fun HomeScreenPreview(){
     HomeScreen(
-        onNavigateToPiecesScreen = {} ,
+        onNavigateToManagerScreen = {},
+        onNavigateToSellerScreen = {},
         modifier = Modifier.fillMaxSize(),
     )
 }

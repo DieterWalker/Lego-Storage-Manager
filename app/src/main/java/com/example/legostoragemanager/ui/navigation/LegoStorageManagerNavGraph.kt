@@ -10,6 +10,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.legostoragemanager.ui.home.HomeDestination
 import com.example.legostoragemanager.ui.home.HomeScreen
+import com.example.legostoragemanager.ui.pieceSeller.PiecesSellerDestination
 import com.example.legostoragemanager.ui.piecesManager.PiecesManagerDestination
 import com.example.legostoragemanager.ui.piecesManager.PiecesManagerScreen
 
@@ -32,11 +33,14 @@ fun InventoryNavHost(
         /** Màn hình chính */
         composable(route = HomeDestination.route){
             HomeScreen(
-                onNavigateToPiecesScreen = {
-                     navController.navigate(route = PiecesManagerDestination.route)
+                onNavigateToManagerScreen = {
+                    navController.navigate(route = PiecesManagerDestination.route)
+                },
+                onNavigateToSellerScreen = {
+                    navController.navigate(route = PiecesSellerDestination.route)
 //                    Toast.makeText(
 //                        context,
-//                        "Tính năng đang phát triển",
+//                        "This feature is under development",
 //                        Toast.LENGTH_SHORT
 //                    ).show()
                 },
@@ -47,11 +51,23 @@ fun InventoryNavHost(
         /** Màn hình quản lý gạch Lego */
         composable (route = PiecesManagerDestination.route){
             PiecesManagerScreen(
+                modifier = modifier.fillMaxSize(),
                 onBack = {
                     navController.popBackStack()
                 },
-                modifier = modifier.fillMaxSize()
+
             )
+        }
+
+        /** Màn hình bán gạch Lego */
+        composable (route = PiecesSellerDestination.route){
+            PiecesManagerScreen(
+                modifier = modifier.fillMaxSize(),
+                onBack = {
+                    navController.popBackStack()
+                },
+
+                )
         }
     }
 }

@@ -1,7 +1,5 @@
-package com.example.legostoragemanager.ui.piecesManager
+package com.example.legostoragemanager.ui.pieceSeller
 
-import android.content.pm.ModuleInfo
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -22,20 +20,23 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.legostoragemanager.R
 import com.example.legostoragemanager.ui.navigation.NavigationDestination
+import com.example.legostoragemanager.ui.piecesManager.PiecesManagerDestination
+import com.example.legostoragemanager.ui.piecesManager.PiecesManagerTopBar
 
-object PiecesManagerDestination: NavigationDestination{
-    override val route = "piece_manager"
-    override val titleRes = R.string.piece_manager_screen
+object PiecesSellerDestination: NavigationDestination{
+    override val route = "pieces_seller"
+    override val titleRes = R.string.piece_seller_screen
 }
+
 @Composable
-fun PiecesManagerScreen(
+fun PiecesSellerScreen(
     modifier: Modifier = Modifier,
     onBack: () -> Unit = {},
 
-){
+    ){
     Scaffold(
         topBar = {
-            PiecesManagerTopBar(
+            PiecesSellerTopBar(
                 onBack = onBack,
                 modifier = modifier
             )
@@ -51,10 +52,10 @@ fun PiecesManagerScreen(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PiecesManagerTopBar(
+private fun PiecesSellerTopBar(
     onBack: () -> Unit,
-    modifier: Modifier = Modifier
-){
+    modifier: Modifier
+) {
     TopAppBar(
         title = {
             Row(
@@ -70,7 +71,7 @@ fun PiecesManagerTopBar(
                     )
                 }
                 Text(
-                    text = stringResource(PiecesManagerDestination.titleRes),
+                    text = stringResource(PiecesSellerDestination.titleRes),
                     style = MaterialTheme.typography.headlineMedium
                 )
             }
@@ -80,6 +81,7 @@ fun PiecesManagerTopBar(
 
 @Preview
 @Composable
-private fun PiecesManagerPreview(){
-    PiecesManagerScreen()
+private fun PieceSellerPreview(){
+    PiecesSellerScreen()
 }
+
