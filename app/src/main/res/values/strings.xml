@@ -4,10 +4,12 @@
     <!-- HomeScreen String-->
     <string name="home_greeting">Welcome back!</string>
 
-    <string name="home_pieces_button">PIECES</string>
-    <string name="home_minifigures_button">MINIFIGURES</string>
+    <string name="home_manager_button">MANAGER</string>
+    <string name="home_seller_button">SELLER</string>
 
     <!-- Piece Manager Screen -->
-    <string name="piece_manager_screen">PIECES</string>>
+    <string name="piece_manager_screen">PIECES MANAGER</string>>
 
+    <!-- Piece Seller Screen -->
+    <string name="piece_seller_screen">PIECES MANAGER</string>>
 </resources>
