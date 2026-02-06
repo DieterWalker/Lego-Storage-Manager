@@ -1,16 +1,23 @@
 package com.example.legostoragemanager.ui.home
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.legostoragemanager.R
@@ -29,7 +36,11 @@ fun HomeScreen(
     modifier: Modifier = Modifier
 ){
     Scaffold(
-
+        topBar = {
+            HomeTopBar(
+                modifier = modifier
+            )
+        }
     ) { innerPadding ->
         HomeBody(
             navigateToPiecesScreen = navigateToPiecesScreen,
@@ -40,12 +51,28 @@ fun HomeScreen(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeTopBar(
     modifier: Modifier = Modifier
 ){
+    TopAppBar(
+        title = {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = modifier.fillMaxWidth()
+            ){
+                Text(
+                    text = stringResource(HomeDestination.titleRes),
+                    style = MaterialTheme.typography.headlineMedium
+                )
+            }
+
+        }
+    )
 
 }
+
 @Composable
 fun HomeBody(
     navigateToPiecesScreen: () -> Unit,
@@ -54,7 +81,9 @@ fun HomeBody(
     contentPadding: PaddingValues = PaddingValues(all = 0.dp),
 ){
     Column(
-        modifier = modifier
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = modifier.fillMaxSize()
     ) {
         Text(
             text = "Welcome Back!"
@@ -66,7 +95,7 @@ fun HomeBody(
         }
 
         Button(
-            onClick = navigateToPiecesScreen
+            onClick = navigateToMinifigureScreen
         ) {
             Text("Minifigure")
         }
