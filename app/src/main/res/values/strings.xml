@@ -12,4 +12,21 @@
 
     <!-- Piece Seller Screen -->
     <string name="piece_seller_screen">PIECES MANAGER</string>>
+
+    <!-- Category String -->
+    <string name="piece_category_animals_and_nature">Animals and Nature</string>
+    <string name="piece_category_baseplates">Baseplates</string>
+    <string name="piece_category_bricks">Bricks</string>
+    <string name="piece_category_buildings_and_furniture">Buildings and Furniture</string>
+    <string name="piece_category_cable_hoses_and_string">Cable, Hoses and String</string>
+    <string name="piece_category_connectors">Connectors</string>
+    <string name="piece_category_fabric_and_textiles">Fabric and Textiles</string>
+    <string name="piece_category_minifigure_accessories">Minifigure Accessories</string>
+    <string name="piece_category_minifigure_part">Minifigure Part</string>
+    <string name="piece_category_miscellaneous">Miscellaneous</string>
+    <string name="piece_category_plates">Plates</string>
+    <string name="piece_category_power_functions">Power Functions</string>
+    <string name="piece_category_technic_beams">Technic Beams</string>
+    <string name="piece_category_vehicles_and_transportation">Vehicles and Transportation</string>
+
 </resources>

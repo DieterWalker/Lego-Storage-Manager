@@ -15,15 +15,20 @@ data class Pieces (
     val price: Double,
     val quantity: Int,
     val category: PiecesCategory,
-    val color: String,
 )
 
 class PiecesCategoryConverter{
+    /**
+     * Chuyển đổi danh mục thành String
+     * */
     @TypeConverters
     fun formPiecesCategoryToString(category: PiecesCategory): String {
         return category.name
     }
 
+    /**
+     * Chuyển đổi String thành Danh mục
+     * */
     @TypeConverters
     fun formStringToPiecesCategory(category: String): PiecesCategory {
         return PiecesCategory.valueOf(category)
