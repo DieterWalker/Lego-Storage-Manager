@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    /** Plugin bổ sung các thư viện ksp */
+    id("com.google.devtools.ksp") version "2.3.5"
 }
 
 android {
@@ -38,6 +40,8 @@ android {
 }
 
 dependencies {
+//    implementation("com.google.dagger:dagger-compiler:2.51.1")
+////    ksp("com.google.dagger:dagger-compiler:2.51.1")
     /** Thư viện nền tảng của Android / Kotlin */
     implementation(libs.androidx.core.ktx)
     /** Thư viện quản lý vòng đời của Activity */
@@ -74,4 +78,9 @@ dependencies {
      * + Đọc @Entity, @Dao, tự động sin code SQL + implementation
      * + Kotlin Extensions
      * */
+    implementation("androidx.room:room-runtime:${rootProject.extra["room_version"]}")
+    implementation("androidx.core:core-ktx:1.15.0")
+    ksp("androidx.room:room-compiler:${rootProject.extra["room_version"]}")
+    implementation("androidx.room:room-ktx:${rootProject.extra["room_version"]}")
+
 }
