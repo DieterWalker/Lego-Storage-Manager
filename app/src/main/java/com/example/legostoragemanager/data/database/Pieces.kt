@@ -2,7 +2,7 @@ package com.example.legostoragemanager.data.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.TypeConverters
+import androidx.room.TypeConverter
 
 /**
  * Lớp Entity đại diện cho một hàng dữ liệu trong database
@@ -21,7 +21,7 @@ class PiecesCategoryConverter{
     /**
      * Chuyển đổi danh mục thành String
      * */
-    @TypeConverters
+    @TypeConverter
     fun formPiecesCategoryToString(category: PiecesCategory): String {
         return category.name
     }
@@ -29,7 +29,7 @@ class PiecesCategoryConverter{
     /**
      * Chuyển đổi String thành Danh mục
      * */
-    @TypeConverters
+    @TypeConverter
     fun formStringToPiecesCategory(category: String): PiecesCategory {
         return PiecesCategory.valueOf(category)
     }

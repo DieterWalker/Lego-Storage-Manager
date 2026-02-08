@@ -1,5 +1,6 @@
 package com.example.legostoragemanager.ui.piecesManager
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,41 +21,38 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.legostoragemanager.R
+import com.example.legostoragemanager.ui.home.HomeDestination
 import com.example.legostoragemanager.ui.navigation.NavigationDestination
 
-object PiecesManagerDestination: NavigationDestination{
-    override val route = "piece_manager"
-    override val titleRes = R.string.piece_manager_screen
+object PiecesDetailDestination: NavigationDestination {
+    override val route = "pieces_detail"
+    override val titleRes = R.string.piece_detail_screen
 }
 @Composable
-fun PiecesManagerScreen(
+fun PiecesDetailScreen(
+    onBack: () -> Unit,
     modifier: Modifier = Modifier,
-    onBack: () -> Unit = {},
-    onNavigateToPiecesDetail: () -> Unit,
-
-){
+) {
     Scaffold(
         topBar = {
-            PiecesManagerTopBar(
-                onNavigateToPiecesDetail = onNavigateToPiecesDetail,
+            PiecesDetailTopBar(
                 onBack = onBack,
                 modifier = modifier
             )
         }
     ) { innerPadding ->
-        Text(
-            text = "This feature is under development",
-            style = MaterialTheme.typography.titleSmall,
-            modifier = Modifier.fillMaxSize().padding(innerPadding)
+        PiecesDetailBody(
+            modifier = modifier,
+            contentPadding = innerPadding
         )
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PiecesManagerTopBar(
-    onNavigateToPiecesDetail: () -> Unit,
+private fun PiecesDetailTopBar(
     onBack: () -> Unit,
     modifier: Modifier = Modifier
 ){
@@ -73,31 +71,27 @@ fun PiecesManagerTopBar(
                     )
                 }
                 Text(
-                    text = stringResource(PiecesManagerDestination.titleRes),
+                    text = stringResource(PiecesDetailDestination.titleRes),
                     style = MaterialTheme.typography.headlineMedium
                 )
-                Spacer(
-                    modifier = Modifier.weight(1f)
-                )
-                IconButton(
-                    onClick = onNavigateToPiecesDetail,
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Add,
-                        contentDescription = "Add Pieces",
-                    )
-                }
             }
         }
     )
 }
 
+@Composable
+private fun PiecesDetailBody(
+    modifier: Modifier = Modifier,
+    contentPadding: PaddingValues = PaddingValues(0.dp),
+){
+
+}
+
 @Preview
 @Composable
-private fun PiecesManagerPreview(){
-    PiecesManagerScreen(
-        modifier = Modifier.fillMaxSize(),
+fun  PiecesDetailScreenPreview() {
+    PiecesDetailScreen(
         onBack = {},
-        onNavigateToPiecesDetail = {},
+        modifier = Modifier.fillMaxSize()
     )
 }

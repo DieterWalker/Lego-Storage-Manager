@@ -51,7 +51,6 @@ abstract class LegoStorageManagerDatabase : RoomDatabase() {
                     )
                         .build()
                         .also { Instance = it }
-                }
             }
         }
     }
