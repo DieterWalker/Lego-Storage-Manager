@@ -11,6 +11,9 @@ import androidx.navigation.compose.composable
 import com.example.legostoragemanager.ui.home.HomeDestination
 import com.example.legostoragemanager.ui.home.HomeScreen
 import com.example.legostoragemanager.ui.pieceSeller.PiecesSellerDestination
+import com.example.legostoragemanager.ui.pieceSeller.PiecesSellerScreen
+import com.example.legostoragemanager.ui.piecesManager.PiecesDetailDestination
+import com.example.legostoragemanager.ui.piecesManager.PiecesDetailScreen
 import com.example.legostoragemanager.ui.piecesManager.PiecesManagerDestination
 import com.example.legostoragemanager.ui.piecesManager.PiecesManagerScreen
 
@@ -55,13 +58,25 @@ fun InventoryNavHost(
                 onBack = {
                     navController.popBackStack()
                 },
+                onNavigateToPiecesDetail = {
+                    navController.navigate(route = PiecesDetailDestination.route)
+                }
+            )
+        }
 
+        /** Màn hình thông tin gạch */
+        composable (route = PiecesDetailDestination.route){
+            PiecesDetailScreen(
+                onBack = {
+                    navController.popBackStack()
+                },
+                modifier = modifier.fillMaxSize(),
             )
         }
 
         /** Màn hình bán gạch Lego */
         composable (route = PiecesSellerDestination.route){
-            PiecesManagerScreen(
+            PiecesSellerScreen(
                 modifier = modifier.fillMaxSize(),
                 onBack = {
                     navController.popBackStack()

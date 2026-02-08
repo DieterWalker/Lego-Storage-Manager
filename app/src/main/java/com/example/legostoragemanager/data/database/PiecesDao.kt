@@ -1,5 +1,6 @@
 package com.example.legostoragemanager.data.database
 
+import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -7,6 +8,7 @@ import androidx.room.Query
 import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 
+@Dao
 interface PiecesDao {
     /**
      *  Lấy tất cả dự liệu trong bảng [Pieces]
@@ -18,7 +20,7 @@ interface PiecesDao {
      *  Lấy dự liệu trong bảng [Pieces] trùng khớp với [ID]
      **/
     @Query(value = "SELECT * FROM Pieces WHERE id = :id")
-    fun getPieces(id: Int): Flow<Pieces>
+    fun getPieces(id: Int): Flow<Pieces?>
 
     /**
      *  Thêm dữ liệu vào bảng

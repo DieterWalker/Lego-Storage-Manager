@@ -10,8 +10,11 @@
     <!-- Piece Manager Screen -->
     <string name="piece_manager_screen">PIECES MANAGER</string>>
 
+    <!-- Piece Detail Screen -->
+    <string name="piece_detail_screen">PIECES DETAIL</string>>
+
     <!-- Piece Seller Screen -->
-    <string name="piece_seller_screen">PIECES MANAGER</string>>
+    <string name="piece_seller_screen">PIECES SELLER</string>>
 
     <!-- Category String -->
     <string name="piece_category_animals_and_nature">Animals and Nature</string>
