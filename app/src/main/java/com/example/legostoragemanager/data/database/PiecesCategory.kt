@@ -14,5 +14,7 @@ enum class PiecesCategory {
     PLATES,
     POWER_FUNCTIONS,
     TECHNIC_BEAMS,
-    VEHICLES_AND_TRANSPORTATION
+    VEHICLES_AND_TRANSPORTATION;
+
+    companion object
 }
