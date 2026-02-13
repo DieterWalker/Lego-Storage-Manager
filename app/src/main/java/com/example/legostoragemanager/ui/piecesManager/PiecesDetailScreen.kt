@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -25,6 +26,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -34,6 +36,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
@@ -66,7 +70,8 @@ fun PiecesDetailScreen(
     ) { innerPadding ->
         PiecesDetailBody(
             modifier = modifier,
-            contentPadding = innerPadding
+            onSubmit = {},
+            contentPadding = innerPadding,
         )
     }
 }
@@ -110,6 +115,7 @@ private fun PiecesDetailTopBar(
 @Composable
 private fun PiecesDetailBody(
     modifier: Modifier = Modifier,
+    onSubmit: () -> Unit,
     contentPadding: PaddingValues = PaddingValues(0.dp),
 ){
     var selectedImageUri by remember { mutableStateOf<Uri?>(null) }
@@ -153,6 +159,10 @@ private fun PiecesDetailBody(
 
         /**  */
         PiecesDetailDropDown(
+        )
+
+        PiecesDetailSubmitButton(
+            onSubmit = onSubmit,
         )
 
     }
@@ -233,10 +243,30 @@ private fun PiecesDetailUploadButton(
 ){
     Button(
         onClick = onClick,
-        modifier = Modifier.fillMaxWidth()
+        shape = RoundedCornerShape(5.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(10.dp)
     ) {
         Text(
-            text = "Upload Image"
+            text = "Select Image"
+        )
+    }
+}
+
+@Composable
+private fun PiecesDetailSubmitButton(
+    onSubmit: () -> Unit
+){
+    Button(
+        onClick = onSubmit,
+        shape = RoundedCornerShape(5.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(10.dp)
+    ) {
+        Text(
+            text = "Submit"
         )
     }
 }
@@ -245,14 +275,23 @@ private fun PiecesDetailUploadButton(
 private fun PiecesDetailImage(
     selectedImageUri: Uri?
 ){
-    AsyncImage(
-        model = selectedImageUri?: R.drawable.loading_img,
-        contentDescription = "Upload Image",
+    Surface(
         modifier = Modifier
             .fillMaxWidth()
             .aspectRatio(1f)
-            .padding(10.dp)
-    )
+            .padding(25.dp),
+        shape = RoundedCornerShape(10.dp),
+        shadowElevation = 8.dp,
+//        color = MaterialTheme.colorScheme.surface
+        ) {
+        AsyncImage(
+            model = selectedImageUri?: R.drawable.loading_img,
+            contentDescription = "Upload Image",
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .fillMaxSize()
+        )
+    }
 }
 
 @Composable
